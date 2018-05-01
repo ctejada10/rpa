@@ -51,9 +51,10 @@
     We believe that the next natural step in the evolution of these
     technologies is enabling its users to not only fabricate objects to
     interact with already existing ones, but to interact with the users
-    themselves.This is corroborated by the numerous efforts published in the
+    themselves. This is corroborated by the numerous efforts published in the
     literature in the past years exploring novel ways to add interactivity to
-    digitally fabricated objects (see Related Work for a literature review).
+    digitally fabricated objects (see Related Work for a review of the
+    pertinent work).
 
     However, previous work exploring the enabling of interactivity in digitally
     fabricated devices focus their efforts on the interactivity mechanisms
@@ -68,11 +69,11 @@
     interactions in digitally fabricated objects by utilizing naturally
     occurring properties (e.g. acoustic resonance, fluid dynamics). Rather than
     sensing the interactions of the user on the object itself, we propose to
-    indirectly sense them by measuring the changes caused by the interaction to
-    these properties using wearable sensing technologies. By externally sensing
-    the effects the user's interactions have on these properties, the objects
-    augmented with our mechanisms can be interacted with immediately after they
-    finish printing, and do not require the addition of circuitry to enable
+    indirectly sense them by measuring the changes caused by to said properties
+    using wearable sensing technologies. By externally sensing the effects the
+    user's interactions have on these properties, the objects augmented with
+    our mechanisms can be interacted with immediately after they finish
+    printing, and do not require the addition of circuitry to enable
     interactions.
 
   \section{Research Questions}
@@ -94,9 +95,9 @@
     interesting ways to make 3D printed objects more interactive, few
     concentrate their efforts in adding these interactive capabilities in an
     maker-friendly way---reserving this process for experienced and
-    knowledgeable makers. Below we present a comprehensive survey of the
-    different methods used to enable interactivity explored by the literature,
-    categorized by the mechanisms used to enable them.
+    knowledgeable makers. Below we present a survey of the different methods
+    used to enable interactivity explored by the literature, categorized by the
+    mechanisms used to enable them.
 
     \subsection{Acoustic}
       We can find in the literature multiple efforts leveraging acoustic
@@ -110,12 +111,11 @@
       An effort similar to Stane is Lamello~\cite{Savage:2015cs}.  Here, the
       authors leverage a series of components that, when interacted with,
       produce singular acoustic fingerprints by strumming fabricated comb-like
-      structures that generates an identifiable signature. These tones are
-      captured by contact microphones placed under the surface of the object,
-      and identified using a classification pipeline. Notably, in this effort,
-      the authors compiled a library of different interaction techniques that
-      can be enabled using this mechanism, comprised of different types of
-      buttons, sliders and dials.
+      structures. These tones are captured by contact microphones placed under
+      the surface of the object, and identified using a classification
+      pipeline. Notably, in this effort, the authors compiled a library of
+      different interaction techniques that can be enabled using this
+      mechanism, comprised of different types of buttons, sliders and dials.
 
       Efforts like Acoustruments~\cite{Laput:2015hn} enable more elaborate
       interactions by leveraging more elaborate fabrication processes. Here,
@@ -223,14 +223,14 @@
   \section{Research Plan}
     Although the literature presents a wide variety of mechanisms to add
     interactivity to 3D-printed objects, the vast majority of these rely on
-    some form of extra knowledge from the maker, either as a background in
-    electronics, or complex printing techniques. These aforementioned
-    techniques and mechanisms are in fact adding more complexity to an already
-    complex process~\cite{Hudson:2016hi, Mellis:2012ba, Weichel:2014ed}, in
-    turn raising higher the barrier for users to fabricate their own
-    interactive devices.
+    some form of extra knowledge from the maker, either in the form of
+    background in electronics, or complex printing techniques. These
+    aforementioned techniques and mechanisms are in fact adding more complexity
+    to an already complex process~\cite{Hudson:2016hi, Mellis:2012ba,
+    Weichel:2014ed}, in turn raising higher the barrier for users to fabricate
+    their own interactive devices.
 
-  \section{\itoolkit}
+  \section{Interactivity Toolkit}
     Inspired by the limitations in the literature mentioned above, we propose
     an \itoolkit where the maker can augment its three-dimensional models by
     leveraging naturally occurring properties (such as acoustic resonance, and
@@ -238,21 +238,21 @@
 
     The different mechanisms that will constitute this interaction toolkit must
     possess the following common qualities. They must be able to be printed in
-    commodity printers, thus guaranteeing that these mechanisms are able to be
-    fabricated using all kinds of printers. Additionally, these mechanisms must
-    be ready to use right off the printer, requiring no post-print assembly or
-    cleaning, ensuring that even the most novice of users can augment their
-    objects using them. Lastly, while the objects must be modified to enable
-    interactions, these modifications must be minimal, preserving the objects
-    form.
+    commodity printers, thus guaranteeing that these mechanisms do not require
+    elaborate or expensive fabrication equipment to be enabled. Additionally,
+    these mechanisms must be ready to use right off the printer, requiring no
+    post-print assembly or cleaning, ensuring that even the most novice of
+    users can augment their objects using them. Lastly, while the objects must
+    be modified to enable interactions, these modifications must be minimal,
+    preserving the objects form.
 
-    \subsubsection{\bh}
+    \subsection{Blowhole}
       We have already taken steps in populating this \itoolkit. The first
       addition to it is \bh~\cite{Tejada:2018fj}. \bh enables users to tag
       sections of 3D-printed objects by embedding blowing-activated tags inside
       them. In this section, we describe how \bh works.
 
-      \textbf{Overview}\\
+      \subsubsection{Overview}
         \bh is based on the principle of acoustic resonance: the same principle
         that makes a bottle whistle when blown across its mouth.  \bh embeds
         cavities into 3D models with tubular openings to the surface. The
@@ -283,9 +283,9 @@
         volume of the embedded cavity, and it is classically modeled using the
         Helmholtz~\cite{Helmholtz:1885vp} resonance equation:
 
-        \begin{align}\label{eq:hhz}
+        \begin{align*}\label{eq:hhz}
           f = \frac{cd_t}{\pi}\sqrt{\frac{3}{8(L_t+.75 d_t)d_s^3}}
-        \end{align}
+        \end{align*}
 
         where $c$ represents the speed of sound, $d_s$ the diameter of the
         cavity, and $d_t$ and $L_t$ the diameter and length, respectively, of
@@ -318,7 +318,7 @@
         spectrograms from one for a series of blows into different cavity
         configurations.
 
-        \textbf{Implementation}\\
+        \subsubsection{Implementation}
           As a system, \bh is comprised of three main parts: a design software
           to modify existing 3D models; the objects augmented with resonant
           cavities; and a software that recognizes the sound caused by the user
@@ -327,13 +327,14 @@
 
           \textit{Design Software}\\
             Our software is built on top of Autodesk Meshmixer, making use of
-            its Python API to remote control the software, and execute
+            its Python API to remotely control the software, and execute
             commands.  After the user has tagged all the desired positions in
             the model using our software, the user then links them to their
             corresponding actions. \bh then finds a set of $L_t$ and $d_s$ that
             can fit in the requested locations without cavities colliding,
-            using a depth-first search algorithm with backtracking. See our
-            paper for a detailed explanation of our algorithm.
+            using a depth-first search algorithm with backtracking (for a more
+            detailed explanation of our placement algorithm, please refer to
+            the paper).
 
           \textit{\bh-enabled Objects}\\
             Because our system embeds resonant cavities in existing models, the
@@ -349,7 +350,7 @@
 
             \bh-enabled objects can be used for a different number of
             applications. In our paper we present six different uses for
-            \bh-enabled objects that illustrates the potential for \bh, from
+            \bh-enabled objects that illustrate the potential of \bh. From
             those, we present three:
 
             \underline{Music Controller.} We built a ``music box'' comprised of
@@ -371,7 +372,7 @@
               whales\footnote{\url{http://www.thingiverse.com/thing:232247}\\
               \url{http://www.thingiverse.com/thing:665571}}, and set the
               position of the cavity to the animal's blowhole. When these objects
-              are interacted with, a corresponding video is played on the user's
+              are interacted with, the accompanying video is played on the user's
               computer.
 
             \begin{figure}
@@ -414,11 +415,11 @@
             \label{fig:spectrogram}
         \end{figure*}
 
-      \textbf{Future Work}\\
-        We believe that some of the main strengths of \bh is its playfulness
+      \subsubsection{Future Work}
+        We believe that some of the main strengths of \bh are its playfulness
         and its capabilities to translate a physical location on an object to
         an acoustic signature. Therefore, we are interested in exploring how
-        \bh is used by children and persons with sight disabilities users in a
+        \bh is used by children and persons with sight disabilities in a
         controlled user study. This study will help assess the experience of
         these two populations while using \bh.
 
@@ -436,7 +437,10 @@
         interactivity in 3D-printed objects. We focus our efforts, this time,
         to augment the fabricated objects by adding touch interactivity. As all
         future additions to our toolkit, \at must satisfy the aforementioned
-        qualities to guarantee maker-friendliness.
+        qualities to guarantee maker-friendliness: the objects must be able to
+        be printed using commodity printers; the models must be able to be used
+        right off the printer; and the object's form must be modified as little
+        as possible.
 
         \begin{figure}
           \centering
@@ -457,7 +461,7 @@
         air corresponding to that opening is then rerouted through an exhaust
         pipe. Each corresponding exhaust pipe will be corrugated with a unique
         pattern that translates the flow of air into predictable, identifiable,
-        sounds, in a similar fashion how He \etal explore in
+        sounds---similar to the corrugated tubes He \etal use in
         SqueezaPulse~\cite{He:2017jc}. \cref{fig:elephant-airtouch} presents a
         simplified model of how these air ducts will look inside a 3D-printed
         elephant, where the airflow begins in the elephant's trunk and is then
@@ -477,7 +481,7 @@
 
         Once we finish developing \at, our next step will be to evaluate the
         usability of our system. To do so, we will recruit up to 15 novice
-        makers from the local makerspace and carry out a user study. In the
+        makers from a local makerspace and carry out a user study. In the
         study, we will observe how the participants use \at to augment existing
         designs with touch interactivity. We will proceed to note their
         experiences while modifying, fabricating and interacting with the
@@ -490,7 +494,7 @@
     response to the aforementioned limitations, we introduce  our effort to
     lower the complexity on adding interactivity to fabricated objects by
     leveraging natural properties. Our solution takes the form of an \itoolkit
-    where the maker can choose which mechanisms to augment its object with. As
+    where the maker can choose which mechanisms to augment its objects with. As
     a first addition to this toolkit, we introduced Blowhole, a system that
     allows the maker to tag three dimensional models using blowing-activated
     tags. Additionally, we present our current efforts in populating our
